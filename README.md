@@ -6,7 +6,7 @@ Code for constructing and evaluating the multi-page document table QA benchmark.
 
 ```
 ├── data/
-│   └── test.jsonl               # Benchmark QA pairs (2,106 items)
+│   └── test.jsonl               # Benchmark QA pairs (1,871 items)
 ├── metadata/
 │   └── annotations.jsonl        # Annotation facts for each QA pair
 ├── generation/
@@ -34,7 +34,7 @@ The benchmark is available on HuggingFace:
 ```python
 from datasets import load_dataset
 
-ds = load_dataset("pubpub/pubtables-qa")
+ds = load_dataset("pubpub/pubtables-qa_v2")
 print(ds["test"][0])
 # {'qid': '...', 'question': '...', 'answer': '...', 'images': [...],
 #  'evidence_pages': [...], 'doc_id': '...', 'case_name': '...',
