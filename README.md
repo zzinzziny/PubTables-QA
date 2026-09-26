@@ -45,11 +45,9 @@ To download with images (~4,151 pages, ~1.1GB):
 ```bash
 python -c "
 from huggingface_hub import snapshot_download
-snapshot_download('pubpub/pubtables-qa', repo_type='dataset', local_dir='pubtables-qa')
+snapshot_download('pubpub/pubtables-qa_v2', repo_type='dataset', local_dir='pubtables-qa')
 "
 ```
-
-The QA pairs (`data/test.jsonl`) and annotation facts (`metadata/annotations.jsonl`) are also included in this repository.
 
 ### 1. Generate QA
 
