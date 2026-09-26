@@ -18,7 +18,7 @@ Code for constructing and evaluating the multi-page document table QA benchmark.
 │   ├── run_vllm_inference.py    # vLLM batch inference
 │   └── run_openai_inference.py  # OpenAI-compatible API inference
 ├── evaluation/
-│   ├── score.py                 # ANLS scoring with domain-aware normalization
+│   ├── score_taa.py             # TAA scoring with type-aware answer
 │   ├── score_by_level.py        # Multi-model comparison by level/category
 │   └── llm_judge.py             # LLM-based judge evaluation
 └── analysis/
@@ -65,13 +65,13 @@ python generation/run_qa_generation.py \
 ```bash
 # Local model via vLLM
 python inference/run_vllm_inference.py \
-    --input-jsonl outputs/benchmark.jsonl \
+    --input-jsonl data/test.jsonl \
     --model Qwen/Qwen2.5-VL-7B-Instruct \
     --out-jsonl outputs/predictions/qwen25vl_7b.jsonl
 
 # API model
 python inference/run_openai_inference.py \
-    --input-jsonl outputs/benchmark.jsonl \
+    --input-jsonl data/test.jsonl \
     --model gpt-4o \
     --out-jsonl outputs/predictions/gpt4o.jsonl
 ```
@@ -79,17 +79,11 @@ python inference/run_openai_inference.py \
 ### 3. Evaluate
 
 ```bash
-# Single model
-python evaluation/score.py \
-    --benchmark outputs/benchmark.jsonl \
+python evaluation/score_taa.py \
+    --data data/test.jsonl \
     --predictions outputs/predictions/qwen25vl_7b.jsonl
 
-# Multi-model comparison
-python evaluation/score_by_level.py \
-    --benchmark outputs/benchmark.jsonl \
-    --pred-dir outputs/predictions/ \
-    --models qwen25vl_7b qwen3vl_8b internvl3_8b gpt4o
-```
+
 
 ## Requirements
 
