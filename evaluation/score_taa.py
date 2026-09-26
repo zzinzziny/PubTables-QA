@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """PubTables-QA scorer: type-aware accuracy (TAA) and ANLS.
 
-Self-contained (standard library only). Scores model predictions against
-data/test.jsonl of the PubTables-QA release.
-
 Pipeline for every question
   1. Rule-based answer extraction from the raw response (`extract_answer`).
   2. TAA: the gold answer is assigned an answer type from the question and gold
